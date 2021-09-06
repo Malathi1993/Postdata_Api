@@ -3,20 +3,18 @@ package com.example.postdata_api
 import com.google.gson.annotations.SerializedName
 
 data class UserInfo (
-    @SerializedName("deviceType") val deviceType: String?,
-    @SerializedName("deviceId") val deviceId: Int?,
-    @SerializedName("deviceVersion") val deviceVersion: Int?,
-    @SerializedName("language") val language: String?,
-    @SerializedName("appVersion") val appVersion: Int?,
-    @SerializedName("iPAddress") val iPAddress: Int?,
-    @SerializedName("cabLatitude") val cabLatitude: Int?,
-    @SerializedName("cabLongitude") val cabLongitude: Int?,
-    @SerializedName("pushNotificationToken") val pushNotificationToken: String?,
-    @SerializedName("deviceMac") val deviceMac: String?,
-    @SerializedName("deviceModel") val deviceModel: String?,
-    @SerializedName("deviceName") val deviceName: Int?,
-    @SerializedName("buildId") val buildId: Int?,
-    @SerializedName("customerType") val customerType: String?,
-    @SerializedName("loginType") val loginType: String?,
-    @SerializedName("referalCode") val referalCode: String?
+    val iPAddress: String,
+    val language: String,
+    val deviceType: String,
+    val latitude: String,
+    val longitude: String,
+    val deviceId: String,
+    val name: String,
+    val emailId: String,
+    val deviceName: String,
+    val deviceModel: String,
+    val deviceMac: String,
+    val appVersion: String,
+    val customerType: String,
+    val pushNotificationToken: String
 )

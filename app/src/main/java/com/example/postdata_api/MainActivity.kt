@@ -2,7 +2,7 @@ package com.example.postdata_api
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -31,30 +31,28 @@ class MainActivity : AppCompatActivity() {
         Response = findViewById(R.id.idTVResponse)
 
         // adding on click listener to our button.
-        (buttonPostTOAPI as Any)?.setOnClickListener(View.OnClickListener { // validating if the text field is empty or not.
-            if (editTextmobile?.getText().toString().isEmpty() && editTextpassword?.getText()
-                    .toString().isEmpty()
-            ) {
+
+        buttonPostTOAPI!!.setOnClickListener {
+            if (editTextmobile!!.length()==0 && editTextpassword!!.length()==0) {
                 Toast.makeText(
                     this@MainActivity,
                     "Please enter both the values",
                     Toast.LENGTH_SHORT
                 ).show()
-                return@OnClickListener
+               // return@OnClickListener
             }
             // calling a method to post the data and passing our name and job.
-            postData(editTextmobile?.getText().toString(), editTextpassword?.getText().toString())
+            postData(editTextmobile?.getText().toString(),
+                editTextpassword?.getText().toString())
         })
+        
     }
-
+    
     private fun postData(mobile: String, password: String) {
 
-        // on below line we are creating a retrofit
-        // builder and passing our base url
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://reqres.in/api/") // as we are sending data in json format so
-            // we have to add Gson converter factory
-            .addConverterFactory(GsonConverterFactory.create()) // at last we are building our retrofit builder.
+             val retrofit = Retrofit.Builder()
+            .baseUrl("https://api.mrmoasilha.com")
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
         // below line is to create an instance for our retrofit api class.
         val retrofitAPI: RestApi = retrofit.create(RestApi::class.java)
@@ -71,11 +69,9 @@ class MainActivity : AppCompatActivity() {
                 // this method is called when we get response from our api.
                 Toast.makeText(this@MainActivity, "Data added to API", Toast.LENGTH_SHORT).show()
 
-
-                // on below line we are setting empty text
                 // to our both edit text.
-                editTextmobile?.Text("")
-                editTextpassword?.Text("")
+                editTextmobile?.setText("")
+                editTextpassword?.setText("")
 
                 // we are getting response from our body
                 // and passing it to our modal class.
